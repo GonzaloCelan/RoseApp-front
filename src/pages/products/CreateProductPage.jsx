@@ -108,7 +108,6 @@ export function CreateProductPage({ mode = 'create', currentProduct, onBack, onP
   const [variants, setVariants] = useState(() => isEditing ? productToVariants(currentProduct) : [createVariant()])
   const [previewImage, setPreviewImage] = useState(null)
   const [imageFile, setImageFile] = useState(null)
-  const [previewReady, setPreviewReady] = useState(false)
   const [categories, setCategories] = useState(fallbackCategories)
   const [submitState, setSubmitState] = useState({ status: 'idle', message: '' })
   const [statusUpdating, setStatusUpdating] = useState(false)
@@ -146,17 +145,6 @@ export function CreateProductPage({ mode = 'create', currentProduct, onBack, onP
       ? [createVariant()]
       : current.filter((variant) => variant.id !== variantId))
   }
-
-  useEffect(() => {
-    let secondFrame
-    const firstFrame = requestAnimationFrame(() => {
-      secondFrame = requestAnimationFrame(() => setPreviewReady(true))
-    })
-    return () => {
-      cancelAnimationFrame(firstFrame)
-      if (secondFrame) cancelAnimationFrame(secondFrame)
-    }
-  }, [])
 
   useEffect(() => () => clearTimeout(returnTimer.current), [])
 
@@ -393,7 +381,7 @@ export function CreateProductPage({ mode = 'create', currentProduct, onBack, onP
         </div>
       </div>
 
-      <aside className={`preview-card ${previewReady ? 'preview-card--animated' : ''}`}>
+      <aside className="preview-card">
         <h2>Vista previa</h2>
         <label className={`photo-uploader ${isEditing ? 'photo-uploader--readonly' : ''}`} htmlFor={isEditing ? undefined : 'product-photo'}>
           {displayedImage ? (
