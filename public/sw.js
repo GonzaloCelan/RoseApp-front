@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rose-app-v2-black'
+const CACHE_NAME = 'rose-showroom-v3'
 const APP_SHELL = [
   '/',
   '/index.html',

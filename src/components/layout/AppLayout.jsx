@@ -17,32 +17,43 @@ const navItems = [
 export function AppLayout({ children, title, subtitle, headerAction, onProductsClick, pageKey }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(true)
-  const [installPrompt, setInstallPrompt] = useState(null)
-  const [installed, setInstalled] = useState(() => window.matchMedia('(display-mode: standalone)').matches)
+  const [installPrompt, setInstallPrompt] = useState(() => window.__roseInstallPrompt)
+  const [installed, setInstalled] = useState(() => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true)
 
   useEffect(() => {
     const offerInstallation = (event) => {
       event.preventDefault()
+      window.__roseInstallPrompt = event
       setInstallPrompt(event)
+    }
+    const recoverInstallation = (event) => {
+      setInstallPrompt(event.detail || window.__roseInstallPrompt)
     }
     const confirmInstallation = () => {
       setInstalled(true)
       setInstallPrompt(null)
+      window.__roseInstallPrompt = null
     }
 
     window.addEventListener('beforeinstallprompt', offerInstallation)
+    window.addEventListener('rose:pwa-installable', recoverInstallation)
     window.addEventListener('appinstalled', confirmInstallation)
     return () => {
       window.removeEventListener('beforeinstallprompt', offerInstallation)
+      window.removeEventListener('rose:pwa-installable', recoverInstallation)
       window.removeEventListener('appinstalled', confirmInstallation)
     }
   }, [])
 
   const installApplication = async () => {
-    if (!installPrompt) return
+    if (!installPrompt) {
+      window.alert('Para instalar ROSE - Showroom, abrí el menú del navegador y elegí “Instalar aplicación”.')
+      return
+    }
     await installPrompt.prompt()
     await installPrompt.userChoice
     setInstallPrompt(null)
+    window.__roseInstallPrompt = null
   }
 
   const toggleSidebar = () => {
@@ -81,9 +92,9 @@ export function AppLayout({ children, title, subtitle, headerAction, onProductsC
             <h1>{title}</h1>
             <p>{subtitle}</p>
           </div>
-          {(headerAction || (installPrompt && !installed)) ? (
+          {(headerAction || !installed) ? (
             <div className="topbar__actions">
-              {installPrompt && !installed ? <button className="pwa-install-button" type="button" onClick={installApplication}><Download /> <span>Instalar app</span></button> : null}
+              {!installed ? <button className="pwa-install-button" type="button" onClick={installApplication} title="Instalar ROSE - Showroom"><Download /> <span>Instalar app</span></button> : null}
               {headerAction ? <div className="topbar__action">{headerAction}</div> : null}
             </div>
           ) : null}
