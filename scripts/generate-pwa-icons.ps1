@@ -14,7 +14,7 @@ function New-RoseIcon {
   $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
   $graphics.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
   $graphics.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::AntiAliasGridFit
-  $graphics.Clear([System.Drawing.ColorTranslator]::FromHtml('#FB2879'))
+  $graphics.Clear([System.Drawing.ColorTranslator]::FromHtml('#000000'))
 
   $haloBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(38, 255, 255, 255))
   $haloMargin = [int]($Size * 0.20)
@@ -40,6 +40,6 @@ function New-RoseIcon {
 }
 
 New-Item -ItemType Directory -Force -Path $OutputDirectory | Out-Null
-New-RoseIcon -Size 192 -OutputPath (Join-Path $OutputDirectory 'rose-192.png')
-New-RoseIcon -Size 512 -OutputPath (Join-Path $OutputDirectory 'rose-512.png')
-New-RoseIcon -Size 512 -OutputPath (Join-Path $OutputDirectory 'rose-maskable.png')
+New-RoseIcon -Size 192 -OutputPath (Join-Path $OutputDirectory 'rose-black-192.png')
+New-RoseIcon -Size 512 -OutputPath (Join-Path $OutputDirectory 'rose-black-512.png')
+New-RoseIcon -Size 512 -OutputPath (Join-Path $OutputDirectory 'rose-black-maskable.png')

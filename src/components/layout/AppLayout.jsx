@@ -16,16 +16,9 @@ const navItems = [
 
 export function AppLayout({ children, title, subtitle, headerAction, onProductsClick, pageKey }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
   const [installPrompt, setInstallPrompt] = useState(null)
   const [installed, setInstalled] = useState(() => window.matchMedia('(display-mode: standalone)').matches)
-
-  useEffect(() => {
-    const compactForNotebook = () => {
-      if (window.innerWidth <= 1366 && window.innerWidth > 900) setCollapsed(true)
-    }
-    compactForNotebook()
-  }, [])
 
   useEffect(() => {
     const offerInstallation = (event) => {

@@ -9,23 +9,23 @@
   "display": "standalone",
   "orientation": "any",
   "background_color": "#ffffff",
-  "theme_color": "#fb2879",
+  "theme_color": "#000000",
   "categories": ["business", "productivity"],
   "icons": [
     {
-      "src": "/icons/rose-192.png",
+      "src": "/icons/rose-black-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/rose-512.png",
+      "src": "/icons/rose-black-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/rose-maskable.png",
+      "src": "/icons/rose-black-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

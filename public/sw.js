@@ -1,14 +1,14 @@
-const CACHE_NAME = 'rose-app-v1'
+const CACHE_NAME = 'rose-app-v2-black'
 const APP_SHELL = [
   '/',
   '/index.html',
   '/manifest.webmanifest',
-  '/icons/rose-192.png',
-  '/icons/rose-512.png',
-  '/icons/rose-maskable.png',
-  '/icons/rose-192.svg',
-  '/icons/rose-512.svg',
-  '/icons/rose-maskable.svg',
+  '/icons/rose-black-192.png',
+  '/icons/rose-black-512.png',
+  '/icons/rose-black-maskable.png',
+  '/icons/rose-black-192.svg',
+  '/icons/rose-black-512.svg',
+  '/icons/rose-black-maskable.svg',
 ]
 
 self.addEventListener('install', (event) => {
