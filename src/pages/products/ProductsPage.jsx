@@ -227,8 +227,517 @@ function EditPreviewPanel({ preview, onClose, onOpenFullEditor, onSaveStock, onS
             {mode === 'full' ? <button className="edit-preview-primary" type="button" onClick={() => onOpenFullEditor(product)}>Abrir editor completo <ArrowRight /></button> : null}
             {mode === 'stock' ? <button className="edit-preview-primary" type="button" onClick={saveStock} disabled={!stockChanges.length || stockHasInvalidValue || stockSaving}>{stockSaving ? <><RefreshCw className="status-action__spinner" /> Guardando...</> : `Guardar stock${stockChanges.length ? ` (${stockChanges.length})` : ''}`}</button> : null}
             {mode === 'prices' ? <button className="edit-preview-primary" type="button" onClick={savePrices} disabled={!pricesChanged || pricesInvalid || priceSaving}>{priceSaving ? <><RefreshCw className="status-action__spinner" /> Guardando...</> : 'Guardar precios'}</button> : null}
- „^<∂âûÀk∫wµÁq—Ãπ±ïπù—°ÙÅŸÖ…•Öπ—ïÃÅÕîÅÖç—’Ö±•ÈÖ…Ω∏ÅçΩ……ïç—Öµïπ—îπÄ∞ÅÏÅëï—Ö•±ÃÅÙ§(ÄÄÄÅÙ((ÄÄÄÅÕï—M—Ö—’Õ9Ω—•çî°Ï(ÄÄÄÄÄÅ—Â¡îËÄùÕ’ççïÕÃú∞(ÄÄÄÄÄÅµïÕÕÖùîËÅÅM—Ωç¨ÅëîÄëÌ¡…Ωë’ç–ππÖµïÙÅÖç—’Ö±•ÈÖëºÅçΩ……ïç—Öµïπ—îÅï∏ÄëÌç°ÖπùïÃπ±ïπù—°ÙÄëÌç°ÖπùïÃπ±ïπù—†ÄÙÙÙÄƒÄ¸ÄùŸÖ…•Öπ—îúÄËÄùŸÖ…•Öπ—ïÃùÙπÄ∞(ÄÄÄÅÙ§(ÄÅÙ((ÄÅçΩπÕ–ÅÕÖŸïA…Ωë’ç—A…•çïÃÄÙÅÖÕÂπåÄ°¡…Ωë’ç–∞ÅÏÅçΩÕ—A…•çî∞ÅÕÖ±ïA…•çîÅÙ§ÄÙ¯ÅÏ(ÄÄÄÅÖ›Ö•–Å¡…Ωë’ç—¡§π’¡ëÖ—î°¡…Ωë’ç–π•ê∞Å—ΩA…Ωë’ç—U¡ëÖ—ïIï≈’ïÕ–°Ï(ÄÄÄÄÄÄ∏∏π¡…Ωë’ç–∞(ÄÄÄÄÄÅçΩÕ—A…•çî∞(ÄÄÄÄÄÅÕÖ±ïA…•çî∞(ÄÄÄÅÙ§§((ÄÄÄÅÖ›Ö•–Å±ΩÖëA…Ωë’ç—Ã†§(ÄÄÄÅÕï—M’µµÖ…ÂIïŸ•Õ•Ω∏†°…ïŸ•Õ•Ω∏§ÄÙ¯Å…ïŸ•Õ•Ω∏Ä¨Äƒ§(ÄÄÄÅÕï—M—Ö—’Õ9Ω—•çî°Ï(ÄÄÄÄÄÅ—Â¡îËÄùÕ’ççïÕÃú∞(ÄÄÄÄÄÅµïÕÕÖùîËÅÅA…ïç•ΩÃÅëîÄëÌ¡…Ωë’ç–ππÖµïÙÅÖç—’Ö±•ÈÖëΩÃÅçΩ……ïç—Öµïπ—îπÄ∞(ÄÄÄÅÙ§(ÄÅÙ((ÄÅçΩπÕ–Å’¡ëÖ—ï•±—ï»ÄÙÄ°ÏÅ—Ö…ùï–ËÅÏÅπÖµî∞ÅŸÖ±’îÅÙÅÙ§ÄÙ¯ÅÏ(ÄÄÄÅÕï—•±—ï…Ã†°ç’……ïπ–§ÄÙ¯ÅÏ(ÄÄÄÄÄÅ•òÄ°πÖµîÄÙÙÙÄùÕïÖ…ç†úÄòòÅŸÖ±’î§Å…ï—’…∏ÅÏÄ∏∏π•π•—•Ö±•±—ï…Ã∞ÅÕïÖ…ç†ËÅŸÖ±’îÅÙ(ÄÄÄÄÄÅ•òÄ°πÖµîÄÙÙÙÄùçÖ—ïùΩ…‰úÄòòÅŸÖ±’î§Å…ï—’…∏ÅÏÄ∏∏π•π•—•Ö±•±—ï…Ã∞ÅçÖ—ïùΩ…‰ËÅŸÖ±’îÅÙ(ÄÄÄÄÄÅ•òÄ°πÖµîÄÙÙÙÄùÕ—Ö—’ÃúÄòòÅŸÖ±’î§Å…ï—’…∏ÅÏÄ∏∏π•π•—•Ö±•±—ï…Ã∞ÅÕ—Ö—’ÃËÅŸÖ±’îÅÙ(ÄÄÄÄÄÅ…ï—’…∏ÅÏÄ∏∏πç’……ïπ–∞ÅmπÖµïtËÅŸÖ±’îÅÙ(ÄÄÄÅÙ§(ÄÄÄÅ•òÄ°lùÕïÖ…ç†ú∞ÄùçÖ—ïùΩ…‰ú∞ÄùÕ—Ö—’Ãùtπ•πç±’ëïÃ°πÖµî§§ÅÕï—AÖùî†¿§(ÄÅÙ((ÄÅçΩπÕ–Åô•±—ï…ïëA…Ωë’ç—ÃÄÙÅ’Õï5ïµº††§ÄÙ¯ÅÏ(ÄÄÄÅ…ï—’…∏Å¡…Ωë’ç—Ãπô•±—ï»†°¡…Ωë’ç–§ÄÙ¯Ä†(ÄÄÄÄÄÄ†Öô•±—ï…ÃπçÖ—ïùΩ…‰ÅÒÅ¡…Ωë’ç–πçÖ—ïùΩ…‰ÄÙÙÙÅô•±—ï…ÃπçÖ—ïùΩ…‰§(ÄÄÄÄÄÄòòÄ°ô•±—ï…ÃπÕ—Ö—’ÃÄÙÙÙÄùÖ±∞úÅÒÅM—…•πú°¡…Ωë’ç–πÖç—•Ÿî§ÄÙÙÙÄ°ô•±—ï…ÃπÕ—Ö—’ÃÅÒÄù—…’îú§§(ÄÄÄÄ§§πÕΩ…–†°ô•…Õ–∞ÅÕïçΩπê§ÄÙ¯Å9’µâï»°ÕïçΩπêπ—Ω—Ö±M—Ωç¨ÅÒÄ¿§Ä¥Å9’µâï»°ô•…Õ–π—Ω—Ö±M—Ωç¨ÅÒÄ¿§§(ÄÅÙ∞Åmô•±—ï…ÃπçÖ—ïùΩ…‰∞Åô•±—ï…ÃπÕ—Ö—’Ã∞Å¡…Ωë’ç—Õt§((ÄÅçΩπÕ–Å¡…Ωë’ç—M’µµÖ…‰ÄÙÅÕ’µµÖ…‰ÅÒÅ•π•—•Ö±M’µµÖ…‰(ÄÅçΩπÕ–ÅπΩ…µÖ±M—Ωç≠A…Ωë’ç—ÃÄÙÅ5Ö—†πµÖ‡†¿∞Å9’µâï»°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±ç—•ŸïA…Ωë’ç—Ã§Ä¥Å9’µâï»°¡…Ωë’ç—M’µµÖ…‰πΩ’—=ôM—Ωç≠A…Ωë’ç—Ã§Ä¥Å9’µâï»°¡…Ωë’ç—M’µµÖ…‰π±Ω›M—Ωç≠A…Ωë’ç—Ã§Ä¥Å9’µâï»°¡…Ωë’ç—M’µµÖ…‰π°•ù°M—Ωç≠A…Ωë’ç—Ã§§((ÄÅçΩπÕ–ÅÕ—Ωç≠Mïùµïπ—ÃÄÙÅl(ÄÄÄÅÏÅ≠ï‰ËÄùïµ¡—‰ú∞Å±Öâï∞ËÄùM•∏ÅÕ—Ωç¨ú∞ÅŸÖ±’îËÅ¡…Ωë’ç—M’µµÖ…‰πΩ’—=ôM—Ωç≠A…Ωë’ç—ÃÅÙ∞(ÄÄÄÅÏÅ≠ï‰ËÄù±Ω‹ú∞Å±Öâï∞ËÄù	Ö©ºú∞ÅŸÖ±’îËÅ¡…Ωë’ç—M’µµÖ…‰π±Ω›M—Ωç≠A…Ωë’ç—ÃÅÙ∞(ÄÄÄÅÏÅ≠ï‰ËÄùπΩ…µÖ∞ú∞Å±Öâï∞ËÄù9Ω…µÖ∞ú∞ÅŸÖ±’îËÅπΩ…µÖ±M—Ωç≠A…Ωë’ç—ÃÅÙ∞(ÄÄÄÅÏÅ≠ï‰ËÄù°•ù†ú∞Å±Öâï∞ËÄù±—ºú∞ÅŸÖ±’îËÅ¡…Ωë’ç—M’µµÖ…‰π°•ù°M—Ωç≠A…Ωë’ç—ÃÅÙ∞(ÄÅt(ÄÅçΩπÕ–ÅÕ—Ωç≠•Õ—…•â’—•ΩπQΩ—Ö∞ÄÙÅÕ—Ωç≠Mïùµïπ—Ãπ…ïë’çî†°—Ω—Ö∞∞ÅÕïùµïπ–§ÄÙ¯Å—Ω—Ö∞Ä¨Å9’µâï»°Õïùµïπ–πŸÖ±’î§∞Ä¿§((ÄÅçΩπÕ–Å°ÖÕ•±—ï…ÃÄÙÅ=â©ïç–πŸÖ±’ïÃ°ô•±—ï…Ã§πÕΩµî°	ΩΩ±ïÖ∏§(ÄÅçΩπÕ–Åç±ïÖ…•±—ï…ÃÄÙÄ†§ÄÙ¯ÅÏ(ÄÄÄÅÕï—•±—ï…Ã°•π•—•Ö±•±—ï…Ã§(ÄÄÄÅÕï—AÖùî†¿§(ÄÅÙ(ÄÅçΩπÕ–Åô•…Õ—%—ï¥ÄÙÅ¡Öùï%πôºπ—Ω—Ö±±ïµïπ—ÃÄ¸Å¡Öùï%πôºπ¡ÖùîÄ®Å¡Öùï%πôºπÕ•ÈîÄ¨ÄƒÄËÄ¿(ÄÅçΩπÕ–Å±ÖÕ—%—ï¥ÄÙÅ5Ö—†πµ•∏†°¡Öùï%πôºπ¡ÖùîÄ¨Äƒ§Ä®Å¡Öùï%πôºπÕ•Èî∞Å¡Öùï%πôºπ—Ω—Ö±±ïµïπ—Ã§(ÄÅçΩπÕ–Å¡…Ωë’ç—Õ]•—°YÖ…•Öπ—ÃÄÙÅ’Õï5ïµº††§ÄÙ¯Åô•±—ï…ïëA…Ωë’ç—ÃπµÖ¿†°¡…Ωë’ç–§ÄÙ¯ÅÏ(ÄÄÄÅçΩπÕ–ÅŸÖ…•Öπ—ÃÄÙÅŸÖ…•Öπ—ÕΩ»°¡…Ωë’ç–§(ÄÄÄÅ…ï—’…∏ÅÏ(ÄÄÄÄÄÄ∏∏π¡…Ωë’ç–∞(ÄÄÄÄÄÅŸÖ…•Öπ—Ã∞(ÄÄÄÄÄÅ—Ω—Ö±M—Ωç¨ËÅ9’µâï»°¡…Ωë’ç–π—Ω—Ö±M—Ωç¨Ä¸¸ÅŸÖ…•Öπ—Ãπ…ïë’çî†°—Ω—Ö∞∞ÅŸÖ…•Öπ–§ÄÙ¯Å—Ω—Ö∞Ä¨ÅŸÖ…•Öπ–πÕ—Ωç¨∞Ä¿§§∞(ÄÄÄÅÙ(ÄÅÙ§∞Åmô•±—ï…ïëA…Ωë’ç—Õt§((ÄÅ…ï—’…∏Ä†(ÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç—Ãµ¡Öùîà¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç—ÃµµΩâ•±îµ°ïÖë•πúà¯(ÄÄÄÄÄÄÄÄÒë•ÿ¯Ò†»˘A…Ωë’ç—ΩÃΩ†»¯Ò¿˘ïÕ—•ΩªÑÅ—‘ÅçÖ”Ö±ΩùºÅëîÅ¡…Ωë’ç—ΩÃΩ¿¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄÒâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÌΩπ9ï›A…Ωë’ç—Ù¯ÒA±’ÃÄº¯Å9’ïŸºΩâ’——Ω∏¯(ÄÄÄÄÄÄΩë•ÿ¯((ÄÄÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÕ9ÖµîıÌÅ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï‹ÄëÌÕ’µµÖ…Â1ΩÖë•πúÄ¸Äù•πŸïπ—Ω…‰µΩŸï…Ÿ•ï‹¥µ±ΩÖë•πúúÄËÄúùÙÄëÌÕ’µµÖ…Â……Ω»Ä¸Äù•πŸïπ—Ω…‰µΩŸï…Ÿ•ï‹¥µï……Ω»úÄËÄúùıÅÙÅÖ…•Ñµ±Öâï∞ÙâIïÕ’µï∏Åëï∞Å•πŸïπ—Ö…•ºà¯(ÄÄÄÄÄÄÄÄÒ°ïÖëï»Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}°ïÖëï»à¯(ÄÄÄÄÄÄÄÄÄÄÒë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}ïÂïâ…Ω‹à˘%πŸïπ—Ö…•ºΩÕ¡Ö∏¯(ÄÄÄÄÄÄÄÄÄÄÄÅÌÕ’µµÖ…Â……Ω»Ä¸ÄÒÕ—…Ωπú˘IïÕ’µï∏ÅπºÅë•Õ¡Ωπ•â±îΩÕ—…Ωπú¯ÄËÅÕ’µµÖ…Â1ΩÖë•πúÄ¸ÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}Õ≠ï±ï—Ω∏Å•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}Õ≠ï±ï—Ω∏¥µ—•—±îàÄº¯ÄËÄÒÕ—…Ωπú˘Ì9’µâï»°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±ç—•ŸïA…Ωë’ç—Ã§π—Ω1ΩçÖ±ïM—…•πú†ùïÃµHú•ÙÅÖç—•ŸΩÃÉ
-‹ÅÌ9’µâï»°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±%πÖç—•ŸïA…Ωë’ç—Ã§π—Ω1ΩçÖ±ïM—…•πú†ùïÃµHú•ÙÅ•πÖç—•ŸΩÃÉ
-‹ÅÌ9’µâï»°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±M—Ωç≠Uπ•—Ã§π—Ω1ΩçÖ±ïM—…•πú†ùïÃµHú•ÙÅ’π•ëÖëïÃÅï∏Å•πŸïπ—Ö…•ºΩÕ—…Ωπú˘Ù(ÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄΩ°ïÖëï»¯((ÄÄÄÄÄÄÄÅÌÕ’µµÖ…Â……Ω»Ä¸Ä†(ÄÄÄÄÄÄÄÄÄÄÒ¿Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}ï……Ω»µçΩ¡‰à˘ÌÕ’µµÖ…Â……Ω…ÙΩ¿¯(ÄÄÄÄÄÄÄÄ§ÄËÅÕ’µµÖ…Â1ΩÖë•πúÄ¸Ä†(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}±ΩÖë•πúµ…Ω‹à¯ÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}Õ≠ï±ï—Ω∏àÄº¯ÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µΩŸï…Ÿ•ï›}}Õ≠ï±ï—Ω∏àÄº¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄ§ÄËÄ†(ÄÄÄÄÄÄÄÄÄÄ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâÕ—Ωç¨µ°ïÖ±—†à¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâÕ—Ωç¨µ°ïÖ±—°}}±Öâï±Ãà¯ÒÕ¡Ö∏˘Õ—ÖëºÅùïπï…Ö∞Åëï∞ÅÕ—Ωç¨ÄÒÕµÖ±∞˘âÖ©ºÉä&êÄÃÉ
-‹ÅÖ±—ºÉä&îÄƒ¿ΩÕµÖ±∞¯ΩÕ¡Ö∏¯Òë•ÿ˘ÌÕ—Ωç≠Mïùµïπ—ÃπµÖ¿†°Õïùµïπ–§ÄÙ¯ÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîıÌÅÕ—Ωç¨µ±ïùïπêÅÕ—Ωç¨µ±ïùïπê¥¥ëÌÕïùµïπ–π≠ïÂıÅÙÅ≠ï‰ıÌÕïùµïπ–π≠ïÂÙ¯Ò§Äº˘ÌÕïùµïπ–π±Öâï±ÙÄÒÕ—…Ωπú˘ÌÕïùµïπ–πŸÖ±’ïÙΩÕ—…Ωπú¯ΩÕ¡Ö∏¯•ÙΩë•ÿ¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâÕ—Ωç¨µ°ïÖ±—°}}âÖ»àÅÖ…•Ñµ±Öâï∞Ùâ•Õ—…•â’çßÕ∏Åëï∞ÅÕ—Ωç¨à¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÌÕ—Ωç≠•Õ—…•â’—•ΩπQΩ—Ö∞Ä¸ÅÕ—Ωç≠Mïùµïπ—Ãπô•±—ï»†°ÏÅŸÖ±’îÅÙ§ÄÙ¯ÅŸÖ±’îÄ¯Ä¿§πµÖ¿†°Õïùµïπ–§ÄÙ¯ÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîıÌÅÕ—Ωç¨µÕïùµïπ–ÅÕ—Ωç¨µÕïùµïπ–¥¥ëÌÕïùµïπ–π≠ïÂıÅÙÅ≠ï‰ıÌÕïùµïπ–π≠ïÂÙÅÕ—Â±îıÌÏÅ›•ë—†ËÅÄëÏ°Õïùµïπ–πŸÖ±’îÄºÅÕ—Ωç≠•Õ—…•â’—•ΩπQΩ—Ö∞§Ä®Äƒ¿¡ÙïÄÅıÙÄº¯§ÄËÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâÕ—Ωç¨µÕïùµïπ–ÅÕ—Ωç¨µÕïùµïπ–¥µïµ¡—‰µÕ—Ö—îàÄº˘Ù(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µô•πÖπçîàÅÖ…•Ñµ±Öâï∞ÙâYÖ±Ω…ïÃÅùïπï…Ö±ïÃÅëï∞Å•πŸïπ—Ö…•ºà¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒÕ¡Ö∏¯ÒÕµÖ±∞˘YÖ±Ω»ÅÑÅçΩÕ—ºΩÕµÖ±∞¯ÒÕ—…Ωπú˘ÌÖ…ÃπôΩ…µÖ–°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±ΩÕ—YÖ±’î•ÙΩÕ—…Ωπú¯ΩÕ¡Ö∏¯Òà˚äHΩà¯ÒÕ¡Ö∏¯ÒÕµÖ±∞˘Yïπ—ÑÅ¡…ΩÂïç—ÖëÑΩÕµÖ±∞¯ÒÕ—…Ωπú˘ÌÖ…ÃπôΩ…µÖ–°¡…Ωë’ç—M’µµÖ…‰π—Ω—Ö±MÖ±ïYÖ±’î•ÙΩÕ—…Ωπú¯ΩÕ¡Ö∏¯Ò§Äº¯ÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâ•πŸïπ—Ω…‰µô•πÖπçï}}¡…Ωô•–à¯ÒÕµÖ±∞˘ÖπÖπç•ÑÅïÕ—•µÖëÑΩÕµÖ±∞¯ÒÕ—…ΩπúÅÖ…•Ñµ±Öâï∞ıÌÖ…ÃπôΩ…µÖ–°¡…Ωë’ç—M’µµÖ…‰πïÕ—•µÖ—ïëA…Ωô•–•Ù¯Òπ•µÖ—ïë5Ωπï‰ÅŸÖ±’îıÌ¡…Ωë’ç—M’µµÖ…‰πïÕ—•µÖ—ïëA…Ωô•—ÙÄº¯ΩÕ—…Ωπú¯ΩÕ¡Ö∏¯Òï¥˘IïÕ’µï∏Åùïπï…Ö∞Ωï¥¯(ÄÄÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄº¯(ÄÄÄÄÄÄÄÄ•Ù(ÄÄÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÕ9ÖµîÙâçÖ—Ö±ΩúµçÖ…êà¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâçÖ—Ö±Ωúµ—ΩΩ±âÖ»à¯(ÄÄÄÄÄÄÄÄÄÄÒ±Öâï∞Åç±ÖÕÕ9ÖµîÙâçÖ—Ö±ΩúµÕïÖ…ç†à¯ÒMïÖ…ç†Äº¯Ò•π¡’–ÅπÖµîÙâÕïÖ…ç†àÅŸÖ±’îıÌô•±—ï…ÃπÕïÖ…ç°ÙÅΩπ°ÖπùîıÌ’¡ëÖ—ï•±—ï…ÙÅ¡±Öçï°Ω±ëï»Ùâ	’ÕçÖ»Å¡Ω»ÅπΩµâ…î∞ÅèÕë•ùº∞ÅµÖ…çÑ∞ÅM-T∞ÅçΩ±Ω»ÅºÅ—Ö±±î∏∏∏àÄº¯Ω±Öâï∞¯(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâçÖ—Ö±Ωúµô•±—ï…Ãà¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒÕï±ïç–ÅπÖµîÙâçÖ—ïùΩ…‰àÅŸÖ±’îıÌô•±—ï…ÃπçÖ—ïùΩ…ÂÙÅΩπ°ÖπùîıÌ’¡ëÖ—ï•±—ï…ÙÅÖ…•Ñµ±Öâï∞Ùâ•±—…Ö»Å¡…Ωë’ç—ΩÃÅ¡Ω»ÅçÖ—ïùΩÀµÑà¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙàà˘Ö—ïùΩÀµÑΩΩ¡—•Ω∏˘Ì=â©ïç–πïπ—…•ïÃ°çÖ—ïùΩ…Â1Öâï±Ã§πµÖ¿†°mŸÖ±’î∞Å±Öâï±t§ÄÙ¯ÄÒΩ¡—•Ω∏Å≠ï‰ıÌŸÖ±’ïÙÅŸÖ±’îıÌŸÖ±’ïÙ˘Ì±Öâï±ÙΩΩ¡—•Ω∏¯•ÙΩÕï±ïç–¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒÕï±ïç–ÅπÖµîÙâÕ—Ö—’ÃàÅŸÖ±’îıÌô•±—ï…ÃπÕ—Ö—’ÕÙÅΩπ°ÖπùîıÌ’¡ëÖ—ï•±—ï…ÙÅÖ…•Ñµ±Öâï∞Ùâ•±—…Ö»Å¡…Ωë’ç—ΩÃÅ¡Ω»ÅïÕ—Öëºà¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙàà˘Õ—ÖëºËÅÖç—•ŸΩÃΩΩ¡—•Ω∏¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙâôÖ±Õîà˘Õ—ÖëºËÅ•πÖç—•ŸΩÃΩΩ¡—•Ω∏¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙâÖ±∞à˘Õ—ÖëºËÅ—ΩëΩÃΩΩ¡—•Ω∏¯ΩÕï±ïç–¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏Åç±ÖÕÕ9ÖµîÙâç±ïÖ»µô•±—ï…ÃàÅ—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÌç±ïÖ…•±—ï…ÕÙÅë•ÕÖâ±ïêıÏÖ°ÖÕ•±—ï…ÕÙ¯ÒIΩ—Ö—ïç‹Äº¯Å1•µ¡•Ö»Åô•±—…ΩÃΩâ’——Ω∏¯(ÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄΩë•ÿ¯((ÄÄÄÄÄÄÄÅÌ±ΩÖë•πúÄ¸Ä†(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâçÖ—Ö±Ωúµ±ΩÖë•πúà¯ÒIïô…ïÕ°‹Äº¯ÒÕ¡Ö∏˘Ö…ùÖπëºÅ¡…Ωë’ç—ΩÃ∏∏∏ΩÕ¡Ö∏¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄ§ÄËÅï……Ω»Ä¸Ä†(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâïµ¡—‰µ¡…Ωë’ç—ÃÅïµ¡—‰µ¡…Ωë’ç—Ã¥µï……Ω»à¯ÒAÖç≠ÖùïMïÖ…ç†Äº¯Ò†Ã˘9ºÅ¡’ë•µΩÃÅçÖ…ùÖ»Å±ΩÃÅ¡…Ωë’ç—ΩÃΩ†Ã¯Ò¿˘Ìï……Ω…ÙΩ¿¯Òâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÏ†§ÄÙ¯Å±ΩÖëA…Ωë’ç—Ã†•Ù˘Iï•π—ïπ—Ö»Ωâ’——Ω∏¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄ§ÄËÅ¡…Ωë’ç—Õ]•—°YÖ…•Öπ—Ãπ±ïπù—†Ä¸Ä†(ÄÄÄÄÄÄÄÄÄÄ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç—Ãµ—Öâ±îµ›…Ö¿à¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—Öâ±îÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç—Ãµ—Öâ±îà¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—°ïÖê¯Ò—»¯Ò—†˘Õë•ùºΩ—†¯Ò—†˘A…Ωë’ç—ºΩ—†¯Ò—†˘Ö—ïùΩÀµÑΩ—†¯Ò—†˘5Ö…çÑΩ—†¯Ò—†˘Ω±Ω»Ω—†¯Ò—†˘QÖ±±ïÃΩ—†¯Ò—†˘M—Ωç¨Å—Ω—Ö∞Ω—†¯Ò—†˘A…ïç•ºΩ—†¯Ò—†˘Õ—ÖëºΩ—†¯Ò—†˘çç•ΩπïÃΩ—†¯Ω—»¯Ω—°ïÖê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—âΩë‰˘Ì¡…Ωë’ç—Õ]•—°YÖ…•Öπ—ÃπµÖ¿†°¡…Ωë’ç–∞Å…Ω›%πëï‡§ÄÙ¯ÅÏ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅçΩπÕ–Åï·¡ÖπëïêÄÙÅï·¡ÖπëïëA…Ωë’ç—%êÄÙÙÙÅ¡…Ωë’ç–π•ê(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅ…ï—’…∏Ä†(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ…Öùµïπ–Å≠ï‰ıÌ¡…Ωë’ç–π•ëÙ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—»(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅç±ÖÕÕ9ÖµîıÌï·¡ÖπëïêÄ¸Äù¡…Ωë’ç–µ…Ω‹Å¡…Ωë’ç–µ…Ω‹¥µï·¡ÖπëïêúÄËÄù¡…Ωë’ç–µ…Ω‹ùÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÕ—Â±îıÌÏÅÖπ•µÖ—•Ωπï±Ö‰ËÅÄëÌ5Ö—†πµ•∏°…Ω›%πëï‡∞Ä‡§Ä®ÄÃ—ıµÕÄÅıÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—êÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µçΩëîà˘Ì¡…Ωë’ç–πçΩëïÙΩ—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—êÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µπÖµîà¯Òë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µ•ëïπ—•—‰à¯ÒA…Ωë’ç—Q°’µâπÖ•∞ÅÕ…åıÌ¡…Ωë’ç–π•µÖùïU…±ÙÅπÖµîıÌ¡…Ωë’ç–ππÖµïÙÄº¯ÒÕ¡Ö∏˘Ì¡…Ωë’ç–ππÖµïÙΩÕ¡Ö∏¯Ωë•ÿ¯Ω—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—ê˘ÌçÖ—ïùΩ…Â9Öµî°¡…Ωë’ç–•ÙΩ—ê¯Ò—ê˘Ì¡…Ωë’ç–πâ…ÖπêÅÒÄüäPùÙΩ—ê¯Ò—ê¯ÒA…Ωë’ç—Ω±Ω…ÃÅŸÖ…•Öπ—ÃıÌ¡…Ωë’ç–πŸÖ…•Öπ—ÕÙÄº¯Ω—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏Åç±ÖÕÕ9ÖµîÙâÕ•ÈïÃµ—…•ùùï»àÅ—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÏ†§ÄÙ¯ÅÕï—·¡ÖπëïëA…Ωë’ç—%ê°ï·¡ÖπëïêÄ¸Åπ’±∞ÄËÅ¡…Ωë’ç–π•ê•ÙÅÖ…•Ñµï·¡ÖπëïêıÌï·¡ÖπëïëÙÅÖ…•Ñµ±Öâï∞ıÌÄëÌï·¡ÖπëïêÄ¸Äù=ç’±—Ö»úÄËÄùYï»ùÙÅÕ—Ωç¨Å¡Ω»Å—Ö±±îÅëîÄëÌ¡…Ωë’ç–ππÖµïıÅÙ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒM•ÈïA•±±ÃÅŸÖ…•Öπ—ÃıÌ¡…Ωë’ç–πŸÖ…•Öπ—ÕÙÄº¯Ò°ïŸ…ΩπΩ›∏Äº¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩâ’——Ω∏¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩ—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—êÅç±ÖÕÕ9ÖµîıÌ¡…Ωë’ç–π—Ω—Ö±M—Ωç¨ÄÙÄ‘Ä¸ÄùÕ—Ωç¨µ±Ω‹ÅÕ—Ωç¨µ—Ω—Ö∞úÄËÄùÕ—Ωç¨µ—Ω—Ö∞ùÙ¯ÒÕ—…Ωπú˘Ì¡…Ωë’ç–π—Ω—Ö±M—Ωç≠ÙΩÕ—…Ωπú¯ÒÕµÖ±∞¯Å’π•ëÖëïÃΩÕµÖ±∞¯Ω—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—êÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µ¡…•çîà˘ÌÖ…ÃπôΩ…µÖ–°¡…Ωë’ç–πÕÖ±ïA…•çîÅÒÄ¿•ÙΩ—ê¯Ò—ê¯ÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîıÌÅÕ—Ö—’ÃµâÖëùîÄëÌ¡…Ωë’ç–πÖç—•ŸîÄ¸ÄùÕ—Ö—’ÃµâÖëùî¥µÖç—•ŸîúÄËÄùÕ—Ö—’ÃµâÖëùî¥µ•πÖç—•ŸîùıÅÙ˘Ì¡…Ωë’ç–πÖç—•ŸîÄ¸Äùç—•ŸºúÄËÄù%πÖç—•ŸºùÙΩÕ¡Ö∏¯Ω—ê¯Ò—ê¯Òç—•Ωπ	’——ΩπÃÅ¡…Ωë’ç–ıÌ¡…Ωë’ç—ÙÅΩπ=¡ïπë•—5ïπ‘ıÌΩ¡ïπë•—5ïπ’ÙÅΩπQΩùù±ïM—Ö—’ÃıÌÕï—M—Ö—’ÕΩπô•…µÖ—•ΩπÙÅ’¡ëÖ—•πúıÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÙÙÙÅ¡…Ωë’ç–π•ëÙÅµïπ’=¡ï∏ıÌïë•—5ïπ‘¸π¡…Ωë’ç–π•êÄÙÙÙÅ¡…Ωë’ç–π•ëÙÄº¯Ω—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩ—»¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—»Åç±ÖÕÕ9ÖµîıÌÅŸÖ…•Öπ–µëï—Ö•∞µ…Ω‹ÄëÌï·¡ÖπëïêÄ¸ÄùŸÖ…•Öπ–µëï—Ö•∞µ…Ω‹¥µΩ¡ï∏úÄËÄúùıÅÙÅÖ…•Ñµ°•ëëï∏ıÏÖï·¡ÖπëïëÙ¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒ—êÅçΩ±M¡Ö∏Ùàƒ¿à¯Òë•ÿÅç±ÖÕÕ9ÖµîÙâŸÖ…•Öπ–µëï—Ö•∞µçΩ±±Ö¡Õîà¯Òë•ÿ¯ÒYÖ…•Öπ—	…ïÖ≠ëΩ›∏ÅŸÖ…•Öπ—ÃıÌ¡…Ωë’ç–πŸÖ…•Öπ—ÕÙÄº¯Ωë•ÿ¯Ωë•ÿ¯Ω—ê¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩ—»¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩ…Öùµïπ–¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ§(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÙ•ÙΩ—âΩë‰¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄΩ—Öâ±î¯(ÄÄÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯((ÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µçÖ…ëÃà˘Ì¡…Ωë’ç—Õ]•—°YÖ…•Öπ—ÃπµÖ¿†°¡…Ωë’ç–§ÄÙ¯ÄÒÖ…—•ç±îÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µµΩâ•±îµçÖ…êàÅ≠ï‰ıÌ¡…Ωë’ç–π•ëÙ¯Òë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µµΩâ•±îµçÖ…ë}}—Ω¿à¯Òë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µ•ëïπ—•—‰à¯ÒA…Ωë’ç—Q°’µâπÖ•∞ÅÕ…åıÌ¡…Ωë’ç–π•µÖùïU…±ÙÅπÖµîıÌ¡…Ωë’ç–ππÖµïÙÄº¯Òë•ÿ¯ÒÕ¡Ö∏˘Ì¡…Ωë’ç–πçΩëïÙΩÕ¡Ö∏¯Ò†Ã˘Ì¡…Ωë’ç–ππÖµïÙΩ†Ã¯Ωë•ÿ¯Ωë•ÿ¯ÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîıÌÅÕ—Ö—’ÃµâÖëùîÄëÌ¡…Ωë’ç–πÖç—•ŸîÄ¸ÄùÕ—Ö—’ÃµâÖëùî¥µÖç—•ŸîúÄËÄùÕ—Ö—’ÃµâÖëùî¥µ•πÖç—•ŸîùıÅÙ˘Ì¡…Ωë’ç–πÖç—•ŸîÄ¸Äùç—•ŸºúÄËÄù%πÖç—•ŸºùÙΩÕ¡Ö∏¯Ωë•ÿ¯Òë•ÿÅç±ÖÕÕ9ÖµîÙâ¡…Ωë’ç–µµΩâ•±îµçÖ…ë}}ëÖ—Ñà¯ÒÕ¡Ö∏¯ÒÕµÖ±∞˘Ö—ïùΩÀµÑΩÕµÖ±∞˘ÌçÖ—ïùΩ…Â9Öµî°¡…Ωë’ç–•ÙΩÕ¡Ö∏¯ÒÕ¡Ö∏¯ÒÕµÖ±∞˘QÖ±±ïÃΩÕµÖ±∞¯ÒM•ÈïA•±±ÃÅŸÖ…•Öπ—ÃıÌ¡…Ωë’ç–πŸÖ…•Öπ—ÕÙÅ±•µ•–ıÏ—ÙÄº¯ΩÕ¡Ö∏¯ÒÕ¡Ö∏¯ÒÕµÖ±∞˘M—Ωç¨Å—Ω—Ö∞ΩÕµÖ±∞˘Ì¡…Ωë’ç–π—Ω—Ö±M—Ωç≠ÙÅ’π•ëÖëïÃΩÕ¡Ö∏¯ÒÕ¡Ö∏¯ÒÕµÖ±∞˘A…ïç•ºΩÕµÖ±∞˘ÌÖ…ÃπôΩ…µÖ–°¡…Ωë’ç–πÕÖ±ïA…•çîÅÒÄ¿•ÙΩÕ¡Ö∏¯Ωë•ÿ¯ÒYÖ…•Öπ—	…ïÖ≠ëΩ›∏ÅŸÖ…•Öπ—ÃıÌ¡…Ωë’ç–πŸÖ…•Öπ—ÕÙÄº¯Òç—•Ωπ	’——ΩπÃÅ¡…Ωë’ç–ıÌ¡…Ωë’ç—ÙÅΩπ=¡ïπë•—5ïπ‘ıÌΩ¡ïπë•—5ïπ’ÙÅΩπQΩùù±ïM—Ö—’ÃıÌÕï—M—Ö—’ÕΩπô•…µÖ—•ΩπÙÅ’¡ëÖ—•πúıÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÙÙÙÅ¡…Ωë’ç–π•ëÙÅµïπ’=¡ï∏ıÌïë•—5ïπ‘¸π¡…Ωë’ç–π•êÄÙÙÙÅ¡…Ωë’ç–π•ëÙÄº¯ΩÖ…—•ç±î¯•ÙΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄº¯(ÄÄÄÄÄÄÄÄ§ÄËÄ†(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâïµ¡—‰µ¡…Ωë’ç—Ãà¯ÒAÖç≠ÖùïMïÖ…ç†Äº¯Ò†Ã˘9ºÅïπçΩπ—…ÖµΩÃÅ¡…Ωë’ç—ΩÃΩ†Ã¯Ò¿˘A…ΩãÑÅçÖµâ•ÖπëºÅºÅ±•µ¡•ÖπëºÅ±ΩÃÅô•±—…ΩÃ∏Ω¿¯Òâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÌç±ïÖ…•±—ï…ÕÙ˘1•µ¡•Ö»Åô•±—…ΩÃΩâ’——Ω∏¯Ωë•ÿ¯(ÄÄÄÄÄÄÄÄ•Ù((ÄÄÄÄÄÄÄÄÒôΩΩ—ï»Åç±ÖÕÕ9ÖµîÙâçÖ—Ö±ΩúµôΩΩ—ï»à¯(ÄÄÄÄÄÄÄÄÄÄÒÕ¡Ö∏˘5ΩÕ—…ÖπëºÅÌô•…Õ—%—ïµÙÅÑÅÌ±ÖÕ—%—ïµÙÅëîÅÌ¡Öùï%πôºπ—Ω—Ö±±ïµïπ—ÕÙÅ¡…Ωë’ç—ΩÃΩÕ¡Ö∏¯(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâ¡Öù•πÖ—•Ω∏àÅÖ…•Ñµ±Öâï∞ÙâCÖù•πÖÃÅëîÅ¡…Ωë’ç—ΩÃà¯(ÄÄÄÄÄÄÄÄÄÄÄÅÌ……Ö‰πô…Ω¥°ÏÅ±ïπù—†ËÅ¡Öùï%πôºπ—Ω—Ö±AÖùïÃÅÙ∞Ä°|∞Å¡Öùï%πëï‡§ÄÙ¯Ä†(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—Â¡îÙââ’——Ω∏à(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅç±ÖÕÕ9ÖµîıÌÅ¡Öù•πÖ—•Ω∏µëΩ–ÄëÌ¡Öùï%πëï‡ÄÙÙÙÅ¡Öùï%πôºπ¡ÖùîÄ¸Äù¡Öù•πÖ—•Ω∏µëΩ–¥µÖç—•ŸîúÄËÄúùıÅÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅ≠ï‰ıÌ¡Öùï%πëï·Ù(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅΩπ±•ç¨ıÏ†§ÄÙ¯ÅÕï—AÖùî°¡Öùï%πëï‡•Ù(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅë•ÕÖâ±ïêıÌ±ΩÖë•πùÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÖ…•Ñµ±Öâï∞ıÌÅ%»ÅÑÅ±ÑÅ√Öù•πÑÄëÌ¡Öùï%πëï‡Ä¨Ä≈ıÅÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÖ…•Ñµç’……ïπ–ıÌ¡Öùï%πëï‡ÄÙÙÙÅ¡Öùï%πôºπ¡ÖùîÄ¸Äù¡ÖùîúÄËÅ’πëïô•πïëÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅ—•—±îıÌÅCÖù•πÑÄëÌ¡Öùï%πëï‡Ä¨Ä≈ıÅÙ(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄº¯(ÄÄÄÄÄÄÄÄÄÄÄÄ§•Ù(ÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄÒÕï±ïç–ÅÖ…•Ñµ±Öâï∞ÙâA…Ωë’ç—ΩÃÅ¡Ω»Å√Öù•πÑàÅŸÖ±’îıÌ¡ÖùïM•ÈïÙÅΩπ°ÖπùîıÏ°ÏÅ—Ö…ùï–ÅÙ§ÄÙ¯ÅÏÅÕï—AÖùïM•Èî°9’µâï»°—Ö…ùï–πŸÖ±’î§§ÏÅÕï—AÖùî†¿§ÅıÙ¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙàƒ¿à¯ƒ¿Å¡Ω»Å√Öù•πÑΩΩ¡—•Ω∏¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙà»‘à¯»‘Å¡Ω»Å√Öù•πÑΩΩ¡—•Ω∏¯ÒΩ¡—•Ω∏ÅŸÖ±’îÙà‘¿à¯‘¿Å¡Ω»Å√Öù•πÑΩΩ¡—•Ω∏¯ΩÕï±ïç–¯(ÄÄÄÄÄÄÄÄΩôΩΩ—ï»¯(ÄÄÄÄÄÄΩÕïç—•Ω∏¯((ÄÄÄÄÄÅÌïë•—5ïπ‘Ä¸Åç…ïÖ—ïAΩ…—Ö∞†Òë•—E’•ç≠5ïπ‘Åµïπ‘ıÌïë•—5ïπ’ÙÅΩπ±ΩÕîıÏ†§ÄÙ¯ÅÕï—ë•—5ïπ‘°π’±∞•ÙÅΩπ°ΩΩÕîıÌΩ¡ïπë•—A…ïŸ•ï›ÙÄº¯∞ÅëΩç’µïπ–πâΩë‰§ÄËÅπ’±±Ù((ÄÄÄÄÄÅÌïë•—A…ïŸ•ï‹Ä¸Åç…ïÖ—ïAΩ…—Ö∞†Òë•—A…ïŸ•ï›AÖπï∞Å¡…ïŸ•ï‹ıÌïë•—A…ïŸ•ï›ÙÅΩπ±ΩÕîıÌç±ΩÕïë•—A…ïŸ•ï›ÙÅΩπ=¡ïπ’±±ë•—Ω»ıÌΩ¡ïπ’±±ë•—Ω…ÙÅΩπMÖŸïM—Ωç¨ıÌÕÖŸïYÖ…•Öπ—M—Ωç≠ÙÅΩπMÖŸïA…•çïÃıÌÕÖŸïA…Ωë’ç—A…•çïÕÙÄº¯∞ÅëΩç’µïπ–πâΩë‰§ÄËÅπ’±±Ù((ÄÄÄÄÄÅÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏Ä¸Åç…ïÖ—ïAΩ…—Ö∞††(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏µâÖç≠ë…Ω¿àÅ…Ω±îÙâ¡…ïÕïπ—Ö—•Ω∏àÅΩπ5Ω’ÕïΩ›∏ıÏ°ÏÅ—Ö…ùï–∞Åç’……ïπ—QÖ…ùï–ÅÙ§ÄÙ¯ÅÏÅ•òÄ°—Ö…ùï–ÄÙÙÙÅç’……ïπ—QÖ…ùï–ÄòòÅÕ—Ö—’ÕU¡ëÖ—•πù%êÄÙÙÙÅπ’±∞§ÅÕï—M—Ö—’ÕΩπô•…µÖ—•Ω∏°π’±∞§ÅıÙ¯(ÄÄÄÄÄÄÄÄÄÄÒÕïç—•Ω∏Åç±ÖÕÕ9ÖµîıÌÅÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏ÄëÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄùÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏¥µëïÖç—•ŸÖ—îúÄËÄùÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏¥µÖç—•ŸÖ—îùıÅÙÅ…Ω±îÙâë•Ö±ΩúàÅÖ…•ÑµµΩëÖ∞Ùâ—…’îàÅÖ…•Ñµ±Öâï±±ïëâ‰ÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏µ—•—±îà¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏Åç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ωπ}}ç±ΩÕîàÅ—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÏ†§ÄÙ¯ÅÕï—M—Ö—’ÕΩπô•…µÖ—•Ω∏°π’±∞•ÙÅë•ÕÖâ±ïêıÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÑÙÙÅπ’±±ÙÅÖ…•Ñµ±Öâï∞Ùâï……Ö»ÅçΩπô•…µÖçßÕ∏à¯Ò`Äº¯Ωâ’——Ω∏¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒÕ¡Ö∏Åç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ωπ}}•çΩ∏à˘ÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄÒAΩ›ï…=ôòÄº¯ÄËÄÒAΩ›ï»Äº˘ÙΩÕ¡Ö∏¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒ†»Å•êÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ω∏µ—•—±îà˚
-˝ÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄùïÕÖç—•ŸÖ»úÄËÄùç—•ŸÖ»ùÙÅ¡…Ωë’ç—º¸Ω†»¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒ¿˘Õ”ÖÃÅ¡Ω»ÅÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄùëïÕÖç—•ŸÖ»úÄËÄùÖç—•ŸÖ»ùÙÄÒÕ—…Ωπú˘ÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏ππÖµïÙΩÕ—…Ωπú¯∏Ω¿¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒÕµÖ±∞˘ÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸Äù∞Å¡…Ωë’ç—ºÅëï©ÖÀÑÅëîÅïÕ—Ö»Åë•Õ¡Ωπ•â±î∞Å¡ï…ºÅçΩπÕï…ŸÖÀÑÅ—ΩëΩÃÅÕ’ÃÅëÖ—ΩÃÅ‰ÅÕ‘ÅÕ—Ωç¨∏úÄËÄù∞Å¡…Ωë’ç—ºÅŸΩ±ŸïÀÑÅÑÅïÕ—Ö»Åë•Õ¡Ωπ•â±îÅï∏Åï∞ÅÕ•Õ—ïµÑ∏ùÙΩÕµÖ±∞¯(ÄÄÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ωπ}}Öç—•ΩπÃà¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ωπ}}çÖπçï∞àÅΩπ±•ç¨ıÏ†§ÄÙ¯ÅÕï—M—Ö—’ÕΩπô•…µÖ—•Ω∏°π’±∞•ÙÅë•ÕÖâ±ïêıÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÑÙÙÅπ’±±Ù˘Öπçï±Ö»Ωâ’——Ω∏¯(ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÒâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅç±ÖÕÕ9ÖµîÙâÕ—Ö—’ÃµçΩπô•…µÖ—•Ωπ}}çΩπô•…¥àÅΩπ±•ç¨ıÌçΩπô•…µM—Ö—’Õ°ÖπùïÙÅë•ÕÖâ±ïêıÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÑÙÙÅπ’±±Ù˘ÌÕ—Ö—’ÕU¡ëÖ—•πù%êÄÑÙÙÅπ’±∞Ä¸Ä¯ÒIïô…ïÕ°‹Äº¯ÅA…ΩçïÕÖπëº∏∏∏º¯ÄËÄ˘ÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄÒAΩ›ï…=ôòÄº¯ÄËÄÒAΩ›ï»Äº˘ıÌÕ—Ö—’ÕΩπô•…µÖ—•Ω∏πÖç—•ŸîÄ¸ÄùO¥∞ÅëïÕÖç—•ŸÖ»úÄËÄùO¥∞ÅÖç—•ŸÖ»ùÙº˘ÙΩâ’——Ω∏¯(ÄÄÄÄÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÄÄΩÕïç—•Ω∏¯(ÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄ§∞ÅëΩç’µïπ–πâΩë‰§ÄËÅπ’±±Ù((ÄÄÄÄÄÅÌÕ—Ö—’Õ9Ω—•çîÄ¸ÄÒë•ÿÅç±ÖÕÕ9ÖµîıÌÅçÖ—Ö±Ωúµ—ΩÖÕ–ÅçÖ—Ö±Ωúµ—ΩÖÕ–¥¥ëÌÕ—Ö—’Õ9Ω—•çîπ—Â¡ïıÅÙÅ…Ω±îÙâÕ—Ö—’Ãà¯ÒÕ¡Ö∏˘ÌÕ—Ö—’Õ9Ω—•çîπ—Â¡îÄÙÙÙÄùÕ’ççïÕÃúÄ¸ÄÒ°ïç≠•…ç±î»Äº¯ÄËÄÒ`Äº˘ÙΩÕ¡Ö∏¯Ò¿˘ÌÕ—Ö—’Õ9Ω—•çîπµïÕÕÖùïÙΩ¿¯Òâ’——Ω∏Å—Â¡îÙââ’——Ω∏àÅΩπ±•ç¨ıÏ†§ÄÙ¯ÅÕï—M—Ö—’Õ9Ω—•çî°π’±∞•ÙÅÖ…•Ñµ±Öâï∞Ùâï……Ö»ÅÖŸ•Õºà¯Ò`Äº¯Ωâ’——Ω∏¯Ωë•ÿ¯ÄËÅπ’±±Ù(ÄÄÄÄΩë•ÿ¯(ÄÄ§)Ù(
+          </div>
+        </footer>
+      </aside>
+    </div>
+  )
+}
+
+function variantsFor(product) {
+  if (Array.isArray(product.variants) && product.variants.length) {
+    return product.variants.map((variant) => ({
+      id: variant.id,
+      sku: variant.sku,
+      color: variant.color || '‚Äî',
+      size: variant.size || variant.talle || '‚Äî',
+      stock: Number(variant.stock ?? 0),
+      active: variant.active !== false,
+    }))
+  }
+
+  return product.size ? [{ color: product.color || '‚Äî', size: product.size, stock: Number(product.stock ?? 0), active: true }] : []
+}
+
+function SizePills({ variants, limit = 3 }) {
+  const sizes = Object.values(variants.reduce((grouped, variant) => {
+    const current = grouped[variant.size] || { size: variant.size, stock: 0 }
+    current.stock += Number(variant.stock || 0)
+    grouped[variant.size] = current
+    return grouped
+  }, {}))
+  const visibleVariants = sizes.slice(0, limit)
+  const remaining = sizes.length - visibleVariants.length
+
+  return (
+    <span className="size-pills">
+      {visibleVariants.map(({ size, stock }) => (
+        <span className={`size-pill ${stock === 0 ? 'size-pill--empty' : stock <= 3 ? 'size-pill--low' : ''}`} key={size} title={`Talle ${size}`} aria-label={`Talle ${size}`}>{size === '√önico' ? 'U' : size}</span>
+      ))}
+      {remaining > 0 && <span className="size-pill size-pill--more">+{remaining}</span>}
+    </span>
+  )
+}
+
+function ProductColors({ variants }) {
+  const colors = [...new Set(variants.map(({ color }) => color).filter(Boolean))]
+  if (!colors.length) return '‚Äî'
+
+  return <span className="product-colors">{colors.slice(0, 2).map((color) => <span key={color}><i style={{ background: colorValues[color] || '#d4ccd5' }} />{color}</span>)}{colors.length > 2 && <small>+{colors.length - 2}</small>}</span>
+}
+
+function VariantBreakdown({ variants }) {
+  return (
+    <div className="variant-breakdown">
+      <span className="variant-breakdown__title">Stock por variante</span>
+      <div className="variant-breakdown__items">
+        {variants.map(({ id, sku, color, size, stock }) => (
+          <span className={`variant-stock ${stock === 0 ? 'variant-stock--empty' : stock <= 3 ? 'variant-stock--low' : ''}`} key={id || sku || `${color}-${size}`}>
+            <b>{size}</b><span><i style={{ background: colorValues[color] || '#d4ccd5' }} />{color} ¬∑ {stock} {stock === 1 ? 'unidad' : 'unidades'}</span>
+          </span>
+        ))}
+      </div>
+      <small>{variants.length} {variants.length === 1 ? 'combinaci√≥n' : 'combinaciones'}</small>
+    </div>
+  )
+}
+
+function AnimatedMoney({ value }) {
+  const [displayValue, setDisplayValue] = useState(0)
+
+  useEffect(() => {
+    const target = Number(value) || 0
+    const duration = 1050
+    const startedAt = performance.now()
+    let animationFrame
+
+    const countUp = (now) => {
+      const progress = Math.min((now - startedAt) / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 4)
+      setDisplayValue(target * easedProgress)
+      if (progress < 1) animationFrame = requestAnimationFrame(countUp)
+    }
+
+    animationFrame = requestAnimationFrame(countUp)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [value])
+
+  return ars.format(displayValue)
+}
+
+export function ProductsPage({ onNewProduct, onEditProduct, onInitialLoadComplete }) {
+  const [products, setProducts] = useState([])
+  const [pageInfo, setPageInfo] = useState(initialPage)
+  const [page, setPage] = useState(0)
+  const [pageSize, setPageSize] = useState(10)
+  const [filters, setFilters] = useState(initialFilters)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [summary, setSummary] = useState(null)
+  const [summaryLoading, setSummaryLoading] = useState(true)
+  const [summaryError, setSummaryError] = useState('')
+  const [debouncedSearch, setDebouncedSearch] = useState('')
+  const [expandedProductId, setExpandedProductId] = useState(null)
+  const [editMenu, setEditMenu] = useState(null)
+  const [editPreview, setEditPreview] = useState(null)
+  const editPreviewCloseTimer = useRef(null)
+  const [statusConfirmation, setStatusConfirmation] = useState(null)
+  const [statusUpdatingId, setStatusUpdatingId] = useState(null)
+  const [statusNotice, setStatusNotice] = useState(null)
+  const [summaryRevision, setSummaryRevision] = useState(0)
+  const selectedCategory = filters.category
+  const selectedStatus = filters.status
+  const effectiveSearch = filters.search.trim() ? debouncedSearch : ''
+
+  const closeEditPreview = useCallback((afterClose) => {
+    if (editPreviewCloseTimer.current) return
+
+    const onClosed = typeof afterClose === 'function' ? afterClose : null
+    setEditPreview((current) => current ? { ...current, closing: true } : current)
+
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 0
+      : editPreviewExitDuration
+
+    editPreviewCloseTimer.current = window.setTimeout(() => {
+      setEditPreview(null)
+      editPreviewCloseTimer.current = null
+      onClosed?.()
+    }, delay)
+  }, [])
+
+  useEffect(() => () => {
+    if (editPreviewCloseTimer.current) window.clearTimeout(editPreviewCloseTimer.current)
+  }, [])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedSearch(filters.search.trim()), 350)
+    return () => clearTimeout(timeout)
+  }, [filters.search])
+
+  const loadProducts = useCallback(async (signal) => {
+    setLoading(true)
+    setError('')
+    try {
+      let data
+      if (selectedCategory) {
+        data = await productApi.getByCategory(selectedCategory, { page, size: pageSize, signal })
+      } else if (selectedStatus === 'false') {
+        data = await productApi.getByStatus(false, { page, size: pageSize, signal })
+      } else if (selectedStatus === 'all') {
+        data = await productApi.getByStatus(null, { page, size: pageSize, signal })
+      } else if (effectiveSearch) {
+        data = await productApi.search(effectiveSearch, { page, size: pageSize, signal })
+      } else {
+        data = await productApi.getAll({ page, size: pageSize, signal })
+      }
+      const content = Array.isArray(data) ? data : data?.content
+      setProducts(Array.isArray(content) ? content : [])
+      setPageInfo(Array.isArray(data) ? {
+        ...initialPage, size: data.length, totalElements: data.length,
+        totalPages: data.length ? 1 : 0, empty: !data.length,
+      } : {
+        page: data?.page ?? page,
+        size: data?.size ?? pageSize,
+        totalElements: data?.totalElements ?? 0,
+        totalPages: data?.totalPages ?? 0,
+        first: data?.first ?? page === 0,
+        last: data?.last ?? true,
+        empty: data?.empty ?? !content?.length,
+      })
+    } catch (requestError) {
+      if (requestError?.cause?.name === 'AbortError') return
+      setProducts([])
+      setError(requestError instanceof ApiError ? requestError.message : 'No se pudieron cargar los productos.')
+    } finally {
+      if (!signal?.aborted) setLoading(false)
+    }
+  }, [page, pageSize, selectedCategory, selectedStatus, effectiveSearch])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    loadProducts(controller.signal)
+    return () => controller.abort()
+  }, [loadProducts])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setSummaryLoading(true)
+    setSummaryError('')
+
+    productApi.getSummary({ lowStockLimit: 3, highStockLimit: 10, signal: controller.signal })
+      .then(setSummary)
+      .catch((requestError) => {
+        if (requestError?.cause?.name === 'AbortError') return
+        setSummary(null)
+        setSummaryError(requestError instanceof ApiError ? requestError.message : 'No se pudo cargar el resumen del inventario.')
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setSummaryLoading(false)
+      })
+
+    return () => controller.abort()
+  }, [summaryRevision])
+
+  useEffect(() => {
+    if (!loading && !summaryLoading) onInitialLoadComplete?.()
+  }, [loading, onInitialLoadComplete, summaryLoading])
+
+  useEffect(() => {
+    if (!statusNotice) return undefined
+    const timeout = setTimeout(() => setStatusNotice(null), 2400)
+    return () => clearTimeout(timeout)
+  }, [statusNotice])
+
+  useEffect(() => {
+    if (!editMenu) return undefined
+    const closeEditMenu = ({ key } = {}) => {
+      if (!key || key === 'Escape') setEditMenu(null)
+    }
+    window.addEventListener('keydown', closeEditMenu)
+    window.addEventListener('resize', closeEditMenu)
+    window.addEventListener('scroll', closeEditMenu, true)
+    return () => {
+      window.removeEventListener('keydown', closeEditMenu)
+      window.removeEventListener('resize', closeEditMenu)
+      window.removeEventListener('scroll', closeEditMenu, true)
+    }
+  }, [editMenu])
+
+  useEffect(() => {
+    if (!editPreview) return undefined
+    const closeOnEscape = ({ key }) => {
+      if (key === 'Escape') closeEditPreview()
+    }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [editPreview, closeEditPreview])
+
+  useEffect(() => {
+    if (!statusConfirmation) return undefined
+    const closeOnEscape = ({ key }) => {
+      if (key === 'Escape' && statusUpdatingId === null) setStatusConfirmation(null)
+    }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [statusConfirmation, statusUpdatingId])
+
+  const confirmStatusChange = async () => {
+    if (!statusConfirmation || statusUpdatingId !== null) return
+    const productToChange = statusConfirmation
+    const willActivate = !productToChange.active
+    setStatusUpdatingId(productToChange.id)
+
+    try {
+      if (willActivate) await productApi.activate(productToChange.id)
+      else await productApi.deactivate(productToChange.id)
+
+      setProducts((current) => current.map((product) => product.id === productToChange.id ? { ...product, active: willActivate } : product))
+      setStatusNotice({ type: 'success', message: `${productToChange.name} qued√≥ ${willActivate ? 'activado' : 'desactivado'} correctamente.` })
+      setStatusConfirmation(null)
+      setSummaryRevision((revision) => revision + 1)
+    } catch (requestError) {
+      const message = requestError instanceof ApiError
+        ? [requestError.message, ...requestError.details].filter(Boolean).join(' ¬∑ ')
+        : `No se pudo ${willActivate ? 'activar' : 'desactivar'} el producto.`
+      setStatusNotice({ type: 'error', message })
+      setStatusConfirmation(null)
+    } finally {
+      setStatusUpdatingId(null)
+    }
+  }
+
+  const openEditMenu = (product, trigger) => {
+    const rect = trigger.getBoundingClientRect()
+    const menuWidth = 316
+    const menuHeight = 252
+    const left = Math.max(12, Math.min(window.innerWidth - menuWidth - 12, rect.right - menuWidth))
+    const top = rect.bottom + menuHeight + 10 <= window.innerHeight
+      ? rect.bottom + 8
+      : Math.max(12, rect.top - menuHeight - 8)
+    setEditMenu((current) => current?.product.id === product.id ? null : { product, top, left })
+  }
+
+  const openEditPreview = (mode, product) => {
+    if (editPreviewCloseTimer.current) {
+      window.clearTimeout(editPreviewCloseTimer.current)
+      editPreviewCloseTimer.current = null
+    }
+    setEditMenu(null)
+    setEditPreview({ mode, product })
+  }
+
+  const openFullEditor = (product) => {
+    closeEditPreview(() => onEditProduct(product))
+  }
+
+  const saveVariantStock = async (product, changes) => {
+    const results = await Promise.allSettled(changes.map(({ variantId, stock }) => productApi.setVariantStock(product.id, variantId, stock)))
+    const failures = results.filter(({ status }) => status === 'rejected')
+
+    await loadProducts()
+    setSummaryRevision((revision) => revision + 1)
+
+    if (failures.length) {
+      const details = failures.flatMap(({ reason }) => reason instanceof ApiError
+        ? [reason.message, ...reason.details].filter(Boolean)
+        : ['Una variante no pudo actualizarse.'])
+      throw new ApiError(`${results.length - failures.length} de ${results.length} variantes se actualizaron correctamente.`, { details })
+    }
+
+    setStatusNotice({
+      type: 'success',
+      message: `Stock de ${product.name} actualizado correctamente en ${changes.length} ${changes.length === 1 ? 'variante' : 'variantes'}.`,
+    })
+  }
+
+  const saveProductPrices = async (product, { costPrice, salePrice }) => {
+    await productApi.update(product.id, toProductUpdateRequest({
+      ...product,
+      costPrice,
+      salePrice,
+    }))
+
+    await loadProducts()
+    setSummaryRevision((revision) => revision + 1)
+    setStatusNotice({
+      type: 'success',
+      message: `Precios de ${product.name} actualizados correctamente.`,
+    })
+  }
+
+  const updateFilter = ({ target: { name, value } }) => {
+    setFilters((current) => {
+      if (name === 'search' && value) return { ...initialFilters, search: value }
+      if (name === 'category' && value) return { ...initialFilters, category: value }
+      if (name === 'status' && value) return { ...initialFilters, status: value }
+      return { ...current, [name]: value }
+    })
+    if (['search', 'category', 'status'].includes(name)) setPage(0)
+  }
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => (
+      (!filters.category || product.category === filters.category)
+      && (filters.status === 'all' || String(product.active) === (filters.status || 'true'))
+    )).sort((first, second) => Number(second.totalStock || 0) - Number(first.totalStock || 0))
+  }, [filters.category, filters.status, products])
+
+  const productSummary = summary || initialSummary
+  const normalStockProducts = Math.max(0, Number(productSummary.totalActiveProducts) - Number(productSummary.outOfStockProducts) - Number(productSummary.lowStockProducts) - Number(productSummary.highStockProducts))
+
+  const stockSegments = [
+    { key: 'empty', label: 'Sin stock', value: productSummary.outOfStockProducts },
+    { key: 'low', label: 'Bajo', value: productSummary.lowStockProducts },
+    { key: 'normal', label: 'Normal', value: normalStockProducts },
+    { key: 'high', label: 'Alto', value: productSummary.highStockProducts },
+  ]
+  const stockDistributionTotal = stockSegments.reduce((total, segment) => total + Number(segment.value), 0)
+
+  const hasFilters = Object.values(filters).some(Boolean)
+  const clearFilters = () => {
+    setFilters(initialFilters)
+    setPage(0)
+  }
+  const firstItem = pageInfo.totalElements ? pageInfo.page * pageInfo.size + 1 : 0
+  const lastItem = Math.min((pageInfo.page + 1) * pageInfo.size, pageInfo.totalElements)
+  const productsWithVariants = useMemo(() => filteredProducts.map((product) => {
+    const variants = variantsFor(product)
+    return {
+      ...product,
+      variants,
+      totalStock: Number(product.totalStock ?? variants.reduce((total, variant) => total + variant.stock, 0)),
+    }
+  }), [filteredProducts])
+
+  return (
+    <div className="products-page">
+      <div className="products-mobile-heading">
+        <div><h2>Productos</h2><p>Gestion√° tu cat√°logo de productos</p></div>
+        <button type="button" onClick={onNewProduct}><Plus /> Nuevo</button>
+      </div>
+
+      <section className={`inventory-overview ${summaryLoading ? 'inventory-overview--loading' : ''} ${summaryError ? 'inventory-overview--error' : ''}`} aria-label="Resumen del inventario">
+        <header className="inventory-overview__header">
+          <div>
+            <span className="inventory-overview__eyebrow">Inventario</span>
+            {summaryError ? <strong>Resumen no disponible</strong> : summaryLoading ? <span className="inventory-overview__skeleton inventory-overview__skeleton--title" /> : <strong>{Number(productSummary.totalActiveProducts).toLocaleString('es-AR')} activos ¬∑ {Number(productSummary.totalInactiveProducts).toLocaleString('es-AR')} inactivos ¬∑ {Number(productSummary.totalStockUnits).toLocaleString('es-AR')} unidades en inventario</strong>}
+          </div>
+        </header>
+
+        {summaryError ? (
+          <p className="inventory-overview__error-copy">{summaryError}</p>
+        ) : summaryLoading ? (
+          <div className="inventory-overview__loading-row"><span className="inventory-overview__skeleton" /><span className="inventory-overview__skeleton" /></div>
+        ) : (
+          <>
+            <div className="stock-health">
+              <div className="stock-health__labels"><span>Estado general del stock <small>bajo ‚â§ 3 ¬∑ alto ‚â• 10</small></span><div>{stockSegments.map((segment) => <span className={`stock-legend stock-legend--${segment.key}`} key={segment.key}><i />{segment.label} <strong>{segment.value}</strong></span>)}</div></div>
+              <div className="stock-health__bar" aria-label="Distribuci√≥n del stock">
+                {stockDistributionTotal ? stockSegments.filter(({ value }) => value > 0).map((segment) => <span className={`stock-segment stock-segment--${segment.key}`} key={segment.key} style={{ width: `${(segment.value / stockDistributionTotal) * 100}%` }} />) : <span className="stock-segment stock-segment--empty-state" />}
+              </div>
+            </div>
+            <div className="inventory-finance" aria-label="Valores generales del inventario">
+              <span><small>Valor a costo</small><strong>{ars.format(productSummary.totalCostValue)}</strong></span><b>‚Üí</b><span><small>Venta proyectada</small><strong>{ars.format(productSummary.totalSaleValue)}</strong></span><i /><span className="inventory-finance__profit"><small>Ganancia estimada</small><strong aria-label={ars.format(productSummary.estimatedProfit)}><AnimatedMoney value={productSummary.estimatedProfit} /></strong></span><em>Resumen general</em>
+            </div>
+          </>
+        )}
+      </section>
+
+      <section className="catalog-card">
+        <div className="catalog-toolbar">
+          <label className="catalog-search"><Search /><input name="search" value={filters.search} onChange={updateFilter} placeholder="Buscar por nombre, c√≥digo, marca, SKU, color o talle..." /></label>
+          <div className="catalog-filters">
+            <select name="category" value={filters.category} onChange={updateFilter} aria-label="Filtrar productos por categor√≠a"><option value="">Categor√≠a</option>{Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select>
+            <select name="status" value={filters.status} onChange={updateFilter} aria-label="Filtrar productos por estado"><option value="">Estado: activos</option><option value="false">Estado: inactivos</option><option value="all">Estado: todos</option></select>
+            <button className="clear-filters" type="button" onClick={clearFilters} disabled={!hasFilters}><RotateCcw /> Limpiar filtros</button>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="catalog-loading"><RefreshCw /><span>Cargando productos...</span></div>
+        ) : error ? (
+          <div className="empty-products empty-products--error"><PackageSearch /><h3>No pudimos cargar los productos</h3><p>{error}</p><button type="button" onClick={() => loadProducts()}>Reintentar</button></div>
+        ) : productsWithVariants.length ? (
+          <>
+            <div className="products-table-wrap">
+              <table className="products-table">
+                <thead><tr><th>C√≥digo</th><th>Producto</th><th>Categor√≠a</th><th>Marca</th><th>Color</th><th>Talles</th><th>Stock total</th><th>Precio</th><th>Estado</th><th>Acciones</th></tr></thead>
+                <tbody>{productsWithVariants.map((product, rowIndex) => {
+                  const expanded = expandedProductId === product.id
+                  return (
+                    <Fragment key={product.id}>
+                      <tr
+                        className={expanded ? 'product-row product-row--expanded' : 'product-row'}
+                        style={{ animationDelay: `${Math.min(rowIndex, 8) * 34}ms` }}
+                      >
+                        <td className="product-code">{product.code}</td>
+                        <td className="product-name"><div className="product-identity"><ProductThumbnail src={product.imageUrl} name={product.name} /><span>{product.name}</span></div></td>
+                        <td>{categoryName(product)}</td><td>{product.brand || '‚Äî'}</td><td><ProductColors variants={product.variants} /></td>
+                        <td>
+                          <button className="sizes-trigger" type="button" onClick={() => setExpandedProductId(expanded ? null : product.id)} aria-expanded={expanded} aria-label={`${expanded ? 'Ocultar' : 'Ver'} stock por talle de ${product.name}`}>
+                            <SizePills variants={product.variants} /><ChevronDown />
+                          </button>
+                        </td>
+                        <td className={product.totalStock <= 5 ? 'stock-low stock-total' : 'stock-total'}><strong>{product.totalStock}</strong><small> unidades</small></td>
+                        <td className="product-price">{ars.format(product.salePrice || 0)}</td><td><span className={`status-badge ${product.active ? 'status-badge--active' : 'status-badge--inactive'}`}>{product.active ? 'Activo' : 'Inactivo'}</span></td><td><ActionButtons product={product} onOpenEditMenu={openEditMenu} onToggleStatus={setStatusConfirmation} updating={statusUpdatingId === product.id} menuOpen={editMenu?.product.id === product.id} /></td>
+                      </tr>
+                      <tr className={`variant-detail-row ${expanded ? 'variant-detail-row--open' : ''}`} aria-hidden={!expanded}>
+                        <td colSpan="10"><div className="variant-detail-collapse"><div><VariantBreakdown variants={product.variants} /></div></div></td>
+                      </tr>
+                    </Fragment>
+                  )
+                })}</tbody>
+              </table>
+            </div>
+
+            <div className="product-cards">{productsWithVariants.map((product) => <article className="product-mobile-card" key={product.id}><div className="product-mobile-card__top"><div className="product-identity"><ProductThumbnail src={product.imageUrl} name={product.name} /><div><span>{product.code}</span><h3>{product.name}</h3></div></div><span className={`status-badge ${product.active ? 'status-badge--active' : 'status-badge--inactive'}`}>{product.active ? 'Activo' : 'Inactivo'}</span></div><div className="product-mobile-card__data"><span><small>Categor√≠a</small>{categoryName(product)}</span><span><small>Talles</small><SizePills variants={product.variants} limit={4} /></span><span><small>Stock total</small>{product.totalStock} unidades</span><span><small>Precio</small>{ars.format(product.salePrice || 0)}</span></div><VariantBreakdown variants={product.variants} /><ActionButtons product={product} onOpenEditMenu={openEditMenu} onToggleStatus={setStatusConfirmation} updating={statusUpdatingId === product.id} menuOpen={editMenu?.product.id === product.id} /></article>)}</div>
+          </>
+        ) : (
+          <div className="empty-products"><PackageSearch /><h3>No encontramos productos</h3><p>Prob√° cambiando o limpiando los filtros.</p><button type="button" onClick={clearFilters}>Limpiar filtros</button></div>
+        )}
+
+        <footer className="catalog-footer">
+          <span>Mostrando {firstItem} a {lastItem} de {pageInfo.totalElements} productos</span>
+          <div className="pagination" aria-label="P√°ginas de productos">
+            {Array.from({ length: pageInfo.totalPages }, (_, pageIndex) => (
+              <button
+                type="button"
+                className={`pagination-dot ${pageIndex === pageInfo.page ? 'pagination-dot--active' : ''}`}
+                key={pageIndex}
+                onClick={() => setPage(pageIndex)}
+                disabled={loading}
+                aria-label={`Ir a la p√°gina ${pageIndex + 1}`}
+                aria-current={pageIndex === pageInfo.page ? 'page' : undefined}
+                title={`P√°gina ${pageIndex + 1}`}
+              />
+            ))}
+          </div>
+          <select aria-label="Productos por p√°gina" value={pageSize} onChange={({ target }) => { setPageSize(Number(target.value)); setPage(0) }}><option value="10">10 por p√°gina</option><option value="25">25 por p√°gina</option><option value="50">50 por p√°gina</option></select>
+        </footer>
+      </section>
+
+      {editMenu ? createPortal(<EditQuickMenu menu={editMenu} onClose={() => setEditMenu(null)} onChoose={openEditPreview} />, document.body) : null}
+
+      {editPreview ? createPortal(<EditPreviewPanel preview={editPreview} onClose={closeEditPreview} onOpenFullEditor={openFullEditor} onSaveStock={saveVariantStock} onSavePrices={saveProductPrices} />, document.body) : null}
+
+      {statusConfirmation ? createPortal((
+        <div className="status-confirmation-backdrop" role="presentation" onMouseDown={({ target, currentTarget }) => { if (target === currentTarget && statusUpdatingId === null) setStatusConfirmation(null) }}>
+          <section className={`status-confirmation ${statusConfirmation.active ? 'status-confirmation--deactivate' : 'status-confirmation--activate'}`} role="dialog" aria-modal="true" aria-labelledby="status-confirmation-title">
+            <button className="status-confirmation__close" type="button" onClick={() => setStatusConfirmation(null)} disabled={statusUpdatingId !== null} aria-label="Cerrar confirmaci√≥n"><X /></button>
+            <span className="status-confirmation__icon">{statusConfirmation.active ? <PowerOff /> : <Power />}</span>
+            <h2 id="status-confirmation-title">¬ø{statusConfirmation.active ? 'Desactivar' : 'Activar'} producto?</h2>
+            <p>Est√°s por {statusConfirmation.active ? 'desactivar' : 'activar'} <strong>{statusConfirmation.name}</strong>.</p>
+            <small>{statusConfirmation.active ? 'El producto dejar√° de estar disponible, pero conservar√° todos sus datos y su stock.' : 'El producto volver√° a estar disponible en el sistema.'}</small>
+            <div className="status-confirmation__actions">
+              <button type="button" className="status-confirmation__cancel" onClick={() => setStatusConfirmation(null)} disabled={statusUpdatingId !== null}>Cancelar</button>
+              <button type="button" className="status-confirmation__confirm" onClick={confirmStatusChange} disabled={statusUpdatingId !== null}>{statusUpdatingId !== null ? <><RefreshCw /> Procesando...</> : <>{statusConfirmation.active ? <PowerOff /> : <Power />}{statusConfirmation.active ? 'S√≠, desactivar' : 'S√≠, activar'}</>}</button>
+            </div>
+          </section>
+        </div>
+      ), document.body) : null}
+
+      {statusNotice ? <div className={`catalog-toast catalog-toast--${statusNotice.type}`} role="status"><span>{statusNotice.type === 'success' ? <CheckCircle2 /> : <X />}</span><p>{statusNotice.message}</p><button type="button" onClick={() => setStatusNotice(null)} aria-label="Cerrar aviso"><X /></button></div> : null}
+    </div>
+  )
+}
